@@ -2,7 +2,7 @@
 import streamlit as st
 import yaml
 
-CONFIG_PATH = 'config/multipliers.yaml'
+CONFIG_PATH = 'config/revenue-multipliers.yaml'
 
 def load_industry_multipliers():
     with open(CONFIG_PATH, 'r') as file:
