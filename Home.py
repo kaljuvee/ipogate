@@ -2,8 +2,10 @@
 import streamlit as st
 import yaml
 
+CONFIG_PATH = 'config/multipliers.yaml'
+
 def load_industry_multipliers():
-    with open('multipliers.yaml', 'r') as file:
+    with open(CONFIG_PATH, 'r') as file:
         industry_multipliers = yaml.safe_load(file)
     return industry_multipliers
 
