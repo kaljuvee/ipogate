@@ -6,7 +6,7 @@ def main():
 
     # Background Section
     st.header("Background")
-        default_background_text = '''
+    default_background_text = '''
 Company is a deep-tech company founded in 2020
 and primarily engaged in the development and sale
 of products and services for increasing road safety. The
