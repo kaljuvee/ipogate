@@ -42,7 +42,7 @@ Main activity: other manufacturing n.e.c. (32991 EMTAK 2008).
     legal_info = st.text_area("Enter the company's legal information", default_legal_text , height=150)
 
     # Validate Button
-    if st.button('Validate'):
+    if st.button('Confirm'):
         # Placeholder for future action
         st.write("Validation process will be implemented here.")
 
