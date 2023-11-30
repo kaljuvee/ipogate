@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.title("2. Offer Terms")
+st.title("Offer Terms")
 
 def main():    
 
