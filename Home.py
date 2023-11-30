@@ -39,10 +39,9 @@ def calculate_valuation(ebitda, revenue, sector, rev_multipliers, ebidta_multipl
 
 def display_result(valuation, sector, ebitda, revenue):
     if valuation is not None:
-        st.write(f'The estimated valuation is: ${valuation:,.2f}')
-        st.write(f'Based on estimated revenue: ${revenue:,.2f}')
-        st.write(f'Based on estimated EBITDA: ${ebitda:,.2f}')
-        st.write(f'The company sector is: {sector}')
+        st.write(f'The estimated **company valuation** is: **${valuation:,.2f}**')
+        st.write(f'Based on the **revenue** of: ${revenue:,.2f} and **EBITDA** of: ${ebitda:,.2f}')
+        st.write(f'The company **sector** is: {sector}')
     else:
         st.write('Please enter valid inputs to calculate the valuation.')
 
