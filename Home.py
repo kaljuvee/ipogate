@@ -50,12 +50,13 @@ def main():
     rev_multipliers = load_rev_multipliers()
     ebidta_multipliers = load_ebidta_multipliers()
     ebitda, revenue, sector = get_user_input(rev_multipliers)
-    valuation = calculate_valuation(ebitda, revenue, sector, rev_multipliers, ebidta_multipliers)
-    display_result(valuation, sector, ebitda, revenue)
 
-# The main function would be called to execute the program
-# main()
-
+    # Add a button to trigger the calculation
+    if st.button('Calculate Valuation'):
+        valuation = calculate_valuation(ebitda, revenue, sector, rev_multipliers, ebidta_multipliers)
+        display_result(valuation, sector, ebitda, revenue)
+    else:
+        st.write('Enter the details and press "Calculate Valuation" to see the results.')
 
 if __name__ == "__main__":
     main()
