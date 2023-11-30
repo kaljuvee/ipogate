@@ -6,7 +6,7 @@ def main():
 
     # Background Section
     st.header("Use of Proceeds")
-        default_proceeds_text = '''
+    default_proceeds_text = '''
 Bercman intends to use the revenue from the offer
 for growth and product development. The estimated
 revenue from the offer is approximately XXXX euros,
