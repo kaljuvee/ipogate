@@ -7,14 +7,8 @@ def main():
     # Background Section
     st.header("Background")
     default_background_text = '''
-Company is a deep-tech company founded in 2020
-and primarily engaged in the development and sale
-of products and services for increasing road safety. The
-company’s core competency lies in high value-adding
-and continuously improved software and expertise in
-the field. In addition to developing software, Bercman
-also engages in in-house hardware development,
-but relies on contractual partners for manufacturing
+Company is a deep-tech company founded in 2020 and primarily engaged in the development and sale of products and services for increasing road safety. The
+company’s core competency lies in high value-adding and continuously improved software and expertise in the field. In addition to developing software, Bercman also engages in in-house hardware development,but relies on contractual partners for manufacturing
 operations. 
     '''
     background = st.text_area("Edit the company's background", default_background_text, height=150)
