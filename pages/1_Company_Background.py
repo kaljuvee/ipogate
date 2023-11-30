@@ -28,7 +28,7 @@ central Europe.
 
     # Company Legal Information Section
     st.header("Company Legal Information")
-        default_legal_text = '''
+    default_legal_text = '''
 AS Company is a public limited company established and registered on <date> in Estonia.
 The main information for Bercman:
 Registry code: 1212212121;
