@@ -16,15 +16,18 @@ def load_ebidta_multipliers():
         ebidta_multipliers = yaml.safe_load(file)
     return ebidta_multipliers
     
-def get_user_input(industry_multipliers):
-    ebit = st.text_input('Enter EBIDTA:', '0')
+def get_user_input(rev_multipliers):
+    ebidta = st.text_input('Enter EBIDTA:', '0')
+    revenue = st.text_input('Enter revenue:', '0')
     try:
-        ebit = float(ebit)
+        ebidta = float(ebidta)
+        revenue = float(revenue)
     except ValueError:
-        st.error('Please enter a valid number for EBIT')
-        ebit = None
+        st.error('Please entervalid numbers for EBIDTA an Revenue')
+        ebidta = None
+        revenue = None
     sector = st.selectbox('Select Industry Sector:', options=list(industry_multipliers.keys()))
-    return ebit, sector
+    return ebidta, revenue, sector
 
 def calculate_valuation(ebidta, revenue, sector, rev_multipliers, ebidta_multipliers):
     if ebit is not None and sector in rev_multipliers:
@@ -46,7 +49,7 @@ def display_result(valuation, sector, ebidta, revenue):
 def main():
     rev_multipliers = load_rev_multipliers()
     ebidta_multipliers = load_ebidta_multipliers()
-    ebit, sector = get_user_input(rev_multipliers)
+    ebidta, revenue, sector = get_user_input(rev_multipliers)
     valuation = calculate_valuation(ebit, sector, rev_multipliers, ebidta_multipliers)
     display_result(valuation, sector, ebidta, revenue)
 
