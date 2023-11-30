@@ -1,283 +1,94 @@
-sectors:
-  Advertising:
-    ebitda_multiplier: 7.5
-    revenue_multiplier: 2.23
-  Aerospace/Defense:
-    ebitda_multiplier: 8.0
-    revenue_multiplier: 2.72
-  Air Transport:
-    ebitda_multiplier: 7.0
-    revenue_multiplier: 1.5
-  Apparel:
-    ebitda_multiplier: 6.5
-    revenue_multiplier: 1.22
-  Auto & Truck:
-    ebitda_multiplier: 7.0
-    revenue_multiplier: 1.26
-  Auto Parts:
-    ebitda_multiplier: 7.5
-    revenue_multiplier: 1.24
-  Bank (Money Center):
-    ebitda_multiplier: 6.5
-    revenue_multiplier: 3.34
-  Banks (Regional):
-    ebitda_multiplier: 7.0
-    revenue_multiplier: 3.58
-  Beverage (Alcoholic):
-    ebitda_multiplier: 6.8
-    revenue_multiplier: 10.5
-  Beverage (Soft):
-    ebitda_multiplier: 6.0
-    revenue_multiplier: 2.67
-  Broadcasting:
-    ebitda_multiplier: 9.5
-    revenue_multiplier: 2.01
-  Brokerage & Investment Banking:
-    ebitda_multiplier: 6.2
-    revenue_multiplier: 4.03
-  Building Materials:
-    ebitda_multiplier: 6.9
-    revenue_multiplier: 2.05
-  Business & Consumer Services:
-    ebitda_multiplier: 7.1
-    revenue_multiplier: 2.01
-  Cable TV:
-    ebitda_multiplier: 7.2
-    revenue_multiplier: 2.1
-  Chemical (Basic):
-    ebitda_multiplier: 7.3
-    revenue_multiplier: 1.72
-  Chemical (Diversified):
-    ebitda_multiplier: 6.6
-    revenue_multiplier: 1.77
-  Chemical (Specialty):
-    ebitda_multiplier: 6.7
-    revenue_multiplier: 2.34
-  Coal & Related Energy:
-    ebitda_multiplier: 6.4
-    revenue_multiplier: 0.93
-  Computer Services:
-    ebitda_multiplier: 6.3
-    revenue_multiplier: 1.49
-  Computers/Peripherals:
-    ebitda_multiplier: 7.4
-    revenue_multiplier: 1.28
-  Construction Supplies:
-    ebitda_multiplier: 18.75
-    revenue_multiplier: 1.27
-  Diversified:
-    ebitda_multiplier: 69.44
-    revenue_multiplier: 0.6
-  Drugs (Biotechnology):
-    ebitda_multiplier: 40.68
-    revenue_multiplier: 18.45
-  Drugs (Pharmaceutical):
-    ebitda_multiplier: 17.37
-    revenue_multiplier: 3.57
-  Education:
-    ebitda_multiplier: 30.36
-    revenue_multiplier: 7.19
-  Electrical Equipment:
-    ebitda_multiplier: 22.72
-    revenue_multiplier: 2.41
-  Electronics (Consumer & Office):
-    ebitda_multiplier: 27.83
-    revenue_multiplier: 0.74
-  Electronics (General):
-    ebitda_multiplier: 19.25
-    revenue_multiplier: 1.66
-  Engineering/Construction:
-    ebitda_multiplier: 22.99
-    revenue_multiplier: 0.29
-  Entertainment:
-    ebitda_multiplier: 39.96
-    revenue_multiplier: 6.41
-  Environmental & Waste Services:
-    ebitda_multiplier: 23.39
-    revenue_multiplier: 2.42
-  Farming/Agriculture:
-    ebitda_multiplier: 15.58
-    revenue_multiplier: 1.17
-  Financial Svcs. (Non-bank & Insurance):
-    ebitda_multiplier: 90.63
-    revenue_multiplier: 4.31
-  Food Processing:
-    ebitda_multiplier: 17.40
-    revenue_multiplier: 1.65
-  Food Wholesalers:
-    ebitda_multiplier: 19.71
-    revenue_multiplier: 0.44
-  Furn/Home Furnishings:
-    ebitda_multiplier: 10.05
-    revenue_multiplier: 2.0
-  Green & Renewable Energy:
-    ebitda_multiplier: 31.28
-    revenue_multiplier: 5.28
-  Healthcare Products:
-    ebitda_multiplier: 32.02
-    revenue_multiplier: 8.44
-  Healthcare Support Services:
-    ebitda_multiplier: 16.78
-    revenue_multiplier: 0.89
-  Healthcare Information and Technology:
-    ebitda_multiplier: 30.49
-    revenue_multiplier: 22.11
-  Homebuilding:
-    ebitda_multiplier: 4.54
-    revenue_multiplier: 1.62
-  Hospitals/Healthcare Facilities:
-    ebitda_multiplier: 13.48
-    revenue_multiplier: 5.96
-  Hotel/Gaming:
-    ebitda_multiplier: 82.58
-    revenue_multiplier: 3.11
-  Household Products:
-    ebitda_multiplier: 21.19
-    revenue_multiplier: 4.33
-  Information Services:
-    ebitda_multiplier: 24.56
-    revenue_multiplier: 4.63
-  Insurance (General):
-    ebitda_multiplier: 9.81
-    revenue_multiplier: 1.01
-  Insurance (Life):
-    ebitda_multiplier: 12.25
-    revenue_multiplier: 1.06
-  Insurance (Prop/Cas.):
-    ebitda_multiplier: 21.02
-    revenue_multiplier: 0.46
-  Investments & Asset Management:
-    ebitda_multiplier: 22.44
-    revenue_multiplier: 2.7
-  Machinery:
-    ebitda_multiplier: 18.89
-    revenue_multiplier: 2.51
-  Metals & Mining:
-    ebitda_multiplier: 8.85
-    revenue_multiplier: 1.19
-  Office Equipment & Services:
-    ebitda_multiplier: 14.91
-    revenue_multiplier: 2.51
-  Oil/Gas (Integrated):
-    ebitda_multiplier: 7.98
-    revenue_multiplier: 1.77
-  Oil/Gas (Production and Exploration):
-    ebitda_multiplier: 5.87
-    revenue_multiplier: 1.91
-  Oil/Gas Distribution:
-    revenue_multiplier: 0.81
-    ebitda_multiplier: 19.41
-  Oilfield Svcs/Equip:
-    revenue_multiplier: 0.81
-    ebitda_multiplier: 7.78
-  Packaging & Container:
-    revenue_multiplier: 1.66
-    ebitda_multiplier: 12.95
-  Paper/Forest Products:
-    revenue_multiplier: 1.22
-    ebitda_multiplier: 4.16
-  Power:
-    revenue_multiplier: 1.12
-    ebitda_multiplier: 23.95
-  Precious Metals:
-    revenue_multiplier: 2.21
-    ebitda_multiplier: 33.92
-  Publishing & Newspapers:
-    revenue_multiplier: 1.95
-    ebitda_multiplier: 14.86
-  R.E.I.T.:
-    revenue_multiplier: 13.53
-    ebitda_multiplier: 43.36
-  Real Estate (Development):
-    revenue_multiplier: 0.84
-    ebitda_multiplier: 15.46
-  Real Estate (General/Diversified):
-    revenue_multiplier: 2.71
-    ebitda_multiplier: 21.39
-  Real Estate (Operations & Services):
-    revenue_multiplier: 4.99
-    ebitda_multiplier: 159.94
-  Recreation:
-    revenue_multiplier: 2.32
-    ebitda_multiplier: 20.26
-  Reinsurance:
-    revenue_multiplier: 0.66
-    ebitda_multiplier: 13.62
-  Restaurant/Dining:
-    revenue_multiplier: 3.04
-    ebitda_multiplier: 31.71
-  Retail (Automotive):
-    revenue_multiplier: 0.59
-    ebitda_multiplier: 15.11
-  Retail (Building Supply):
-    revenue_multiplier: 2.06
-    ebitda_multiplier: 14.16
-  Retail (Distributors):
-    revenue_multiplier: 0.31
-    ebitda_multiplier: 11.19
-  Retail (General):
-    revenue_multiplier: 0.94
-    ebitda_multiplier: 19.73
-  Retail (Grocery and Food):
-    revenue_multiplier: 0.78
-    ebitda_multiplier: 12.82
-  Retail (Online):
-    revenue_multiplier: 5.7
-    ebitda_multiplier: 98.64
-  Retail (Special Lines):
-    revenue_multiplier: 1.5
-    ebitda_multiplier: 16.59
-  Rubber & Tires:
-    revenue_multiplier: 1.19
-    ebitda_multiplier: 9.42
-  Semiconductor:
-    revenue_multiplier: 5.3
-    ebitda_multiplier: 19.34
-  Semiconductor Equip:
-    revenue_multiplier: 4.79
-    ebitda_multiplier: 13.34
-  Shipbuilding & Marine:
-    revenue_multiplier: 1.72
-    ebitda_multiplier: 4.06
-  Shoe:
-    revenue_multiplier: 2.25
-    ebitda_multiplier: 25.05
-  Software (Entertainment):
-    revenue_multiplier: 7.98
-    ebitda_multiplier: 13.79
-  Software (Internet):
-    revenue_multiplier: 3.78
-    ebitda_multiplier: NA
-  Software (System & Application):
-    revenue_multiplier: 7.31
-    ebitda_multiplier: 31.83
-  Steel:
-    revenue_multiplier: 0.79
-    ebitda_multiplier: 3.39
-  Telecom (Wireless):
-    revenue_multiplier: 1.27
-    ebitda_multiplier: 25.66
-  Telecom. Equipment:
-    revenue_multiplier: 2.24
-    ebitda_multiplier: 19.00
-  Telecom. Services:
-    revenue_multiplier: 1.36
-    ebitda_multiplier: 10.88
-  Tobacco:
-    revenue_multiplier: 4.6
-    ebitda_multiplier: 11.47
-  Transportation:
-    revenue_multiplier: 1.22
-    ebitda_multiplier: 11.54
-  Transportation (Railroads):
-    revenue_multiplier: 3.58
-    ebitda_multiplier: 15.87
-  Trucking:
-    revenue_multiplier: 1.2
-    ebitda_multiplier: 11.64
-  Utility (General):
-    revenue_multiplier: 3.76
-    ebitda_multiplier: 23.76
-  Utility (Water):
-    revenue_multiplier: 2.15
-    ebitda_multiplier: 31.14
+Advertising: 2.23
+Aerospace/Defense: 2.72
+Air Transport: 1.5
+Apparel: 1.22
+Auto & Truck: 1.26
+Auto Parts: 1.24
+Bank (Money Center): 3.34
+Banks (Regional): 3.58
+Beverage (Alcoholic): 10.5
+Beverage (Soft): 2.67
+Broadcasting: 2.01
+Brokerage & Investment Banking: 4.03
+Building Materials: 2.05
+Business & Consumer Services: 2.01
+Cable TV: 2.1
+Chemical (Basic): 1.72
+Chemical (Diversified): 1.77
+Chemical (Specialty): 2.34
+Coal & Related Energy: 0.93
+Computer Services: 1.49
+Computers/Peripherals: 1.28
+Construction Supplies: 1.27
+Diversified: 0.6
+Drugs (Biotechnology): 18.45
+Drugs (Pharmaceutical): 3.57
+Education: 7.19
+Electrical Equipment: 2.41
+Electronics (Consumer & Office): 0.74
+Electronics (General): 1.66
+Engineering/Construction: 0.29
+Entertainment: 6.41
+Environmental & Waste Services: 2.42
+Farming/Agriculture: 1.17
+Financial Svcs. (Non-bank & Insurance): 4.31
+Food Processing: 1.65
+Food Wholesalers: 0.44
+Furn/Home Furnishings: 2.0
+Green & Renewable Energy: 5.28
+Healthcare Products: 8.44
+Healthcare Support Services: 0.89
+Healthcare Information and Technology: 22.11
+Homebuilding: 1.62
+Hospitals/Healthcare Facilities: 5.96
+Hotel/Gaming: 3.11
+Household Products: 4.33
+Information Services: 4.63
+Insurance (General): 1.01
+Insurance (Life): 1.06
+Insurance (Prop/Cas.): 0.46
+Investments & Asset Management: 2.7
+Machinery: 2.51
+Metals & Mining: 1.19
+Office Equipment & Services: 2.51
+Oil/Gas (Integrated): 1.77
+Oil/Gas (Production and Exploration): 1.91
+Oil/Gas Distribution: 0.81
+Oilfield Svcs/Equip: 0.81
+Packaging & Container: 1.66
+Paper/Forest Products: 1.22
+Power: 1.12
+Precious Metals: 2.21
+Publishing & Newspapers: 1.95
+R.E.I.T.: 13.53
+Real Estate (Development): 0.84
+Real Estate (General/Diversified): 2.71
+Real Estate (Operations & Services): 4.99
+Recreation: 2.32
+Reinsurance: 0.66
+Restaurant/Dining: 3.04
+Retail (Automotive): 0.59
+Retail (Building Supply): 2.06
+Retail (Distributors): 0.31
+Retail (General): 0.94
+Retail (Grocery and Food): 0.78
+Retail (Online): 5.7
+Retail (Special Lines): 1.5
+Rubber & Tires: 1.19
+Semiconductor: 5.3
+Semiconductor Equip: 4.79
+Shipbuilding & Marine: 1.72
+Shoe: 2.25
+Software (Entertainment): 7.98
+Software (Internet): 3.78
+Software (System & Application): 7.31
+Steel: 0.79
+Telecom (Wireless): 1.27
+Telecom. Equipment: 2.24
+Telecom. Services: 1.36
+Tobacco: 4.6
+Transportation: 1.22
+Transportation (Railroads): 3.58
+Trucking: 1.2
+Utility (General): 3.76
+Utility (Water): 2.15
