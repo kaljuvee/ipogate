@@ -1,16 +1,23 @@
-
 import streamlit as st
 import yaml
 
-CONFIG_PATH = 'config/revenue-multipliers.yaml'
+REV_PATH = 'config/revenue-multipliers.yaml'
+EBIDTA_PATH = 'config/ebidta-multipliers.yaml'
 
-def load_industry_multipliers():
-    with open(CONFIG_PATH, 'r') as file:
-        industry_multipliers = yaml.safe_load(file)
-    return industry_multipliers
+st.title('Valuation Calculator')
 
+def load_rev_multipliers():
+    with open(REV_PATH, 'r') as file:
+        rev_multipliers = yaml.safe_load(file)
+    return rev_multipliers
+
+def load_ebidta_multipliers():
+    with open(EBIDTA_PATH, 'r') as file:
+        ebidta_multipliers = yaml.safe_load(file)
+    return ebidta_multipliers
+    
 def get_user_input(industry_multipliers):
-    ebit = st.text_input('Enter EBIT:', '0')
+    ebit = st.text_input('Enter EBIDTA:', '0')
     try:
         ebit = float(ebit)
     except ValueError:
@@ -19,25 +26,29 @@ def get_user_input(industry_multipliers):
     sector = st.selectbox('Select Industry Sector:', options=list(industry_multipliers.keys()))
     return ebit, sector
 
-def calculate_valuation(ebit, sector, industry_multipliers):
-    if ebit is not None and sector in industry_multipliers:
-        multiplier = industry_multipliers[sector]
-        valuation = ebit * multiplier
+def calculate_valuation(ebidta, revenue, sector, rev_multipliers, ebidta_multipliers):
+    if ebit is not None and sector in rev_multipliers:
+        rev_multiplier = rev_multipliers[sector]
+        ebidta_multiplier = ebidta_multipliers[sector]
+        valuation = (ebidta * ebidta_multiplier + rrevenue * ev_multiplier) / 2
         return valuation
     return None
 
-def display_result(valuation):
+def display_result(valuation, sector, ebidta, revenue):
     if valuation is not None:
         st.write(f'The estimated valuation is: ${valuation:,.2f}')
+        st.write(f'Based on estimated revenue: ${revenue:,.2f}')
+        st.write(f'Based on estimated EBIDTA: ${ebidta:,.2f}')
+        st.write(f'The company sector is: ${sector}')
     else:
         st.write('Please enter valid inputs to calculate the valuation.')
 
 def main():
-    st.title('Valuation Calculator')
-    industry_multipliers = load_industry_multipliers()
-    ebit, sector = get_user_input(industry_multipliers)
-    valuation = calculate_valuation(ebit, sector, industry_multipliers)
-    display_result(valuation)
+    rev_multipliers = load_rev_multipliers()
+    ebidta_multipliers = load_ebidta_multipliers()
+    ebit, sector = get_user_input(rev_multipliers)
+    valuation = calculate_valuation(ebit, sector, rev_multipliers, ebidta_multipliers)
+    display_result(valuation, sector, ebidta, revenue)
 
 if __name__ == "__main__":
     main()
