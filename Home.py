@@ -26,7 +26,7 @@ def get_user_input(rev_multipliers):
         st.error('Please entervalid numbers for EBIDTA an Revenue')
         ebidta = None
         revenue = None
-    sector = st.selectbox('Select Industry Sector:', options=list(industry_multipliers.keys()))
+    sector = st.selectbox('Select Industry Sector:', options=list(rev_multipliers.keys()))
     return ebidta, revenue, sector
 
 def calculate_valuation(ebidta, revenue, sector, rev_multipliers, ebidta_multipliers):
