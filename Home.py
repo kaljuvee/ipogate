@@ -29,29 +29,33 @@ def get_user_input(rev_multipliers):
     sector = st.selectbox('Select Industry Sector:', options=list(rev_multipliers.keys()))
     return ebidta, revenue, sector
 
-def calculate_valuation(ebidta, revenue, sector, rev_multipliers, ebidta_multipliers):
-    if ebit is not None and sector in rev_multipliers:
+def calculate_valuation(ebitda, revenue, sector, rev_multipliers, ebidta_multipliers):
+    if ebitda is not None and sector in rev_multipliers:
         rev_multiplier = rev_multipliers[sector]
         ebidta_multiplier = ebidta_multipliers[sector]
-        valuation = (ebidta * ebidta_multiplier + rrevenue * ev_multiplier) / 2
+        valuation = (ebitda * ebidta_multiplier + revenue * rev_multiplier) / 2
         return valuation
     return None
 
-def display_result(valuation, sector, ebidta, revenue):
+def display_result(valuation, sector, ebitda, revenue):
     if valuation is not None:
         st.write(f'The estimated valuation is: ${valuation:,.2f}')
         st.write(f'Based on estimated revenue: ${revenue:,.2f}')
-        st.write(f'Based on estimated EBIDTA: ${ebidta:,.2f}')
-        st.write(f'The company sector is: ${sector}')
+        st.write(f'Based on estimated EBITDA: ${ebitda:,.2f}')
+        st.write(f'The company sector is: {sector}')
     else:
         st.write('Please enter valid inputs to calculate the valuation.')
 
 def main():
     rev_multipliers = load_rev_multipliers()
     ebidta_multipliers = load_ebidta_multipliers()
-    ebidta, revenue, sector = get_user_input(rev_multipliers)
-    valuation = calculate_valuation(ebidta, sector, rev_multipliers, ebidta_multipliers)
-    display_result(valuation, sector, ebidta, revenue)
+    ebitda, revenue, sector = get_user_input(rev_multipliers)
+    valuation = calculate_valuation(ebitda, revenue, sector, rev_multipliers, ebidta_multipliers)
+    display_result(valuation, sector, ebitda, revenue)
+
+# The main function would be called to execute the program
+# main()
+
 
 if __name__ == "__main__":
     main()
