@@ -18,8 +18,13 @@ uploaded_file = st.file_uploader("Choose a PDF file to analyse:", type="pdf")
 user_input = st.text_input("Enter a query")
 
 if uploaded_file is not None and user_input:
+    # Save uploaded file to a temporary location
+    with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as tmp_file:
+        tmp_file.write(uploaded_file.getvalue())
+        tmp_file_path = tmp_file.name
+
     # Process the PDF
-    loader = PyMuPDFLoader(uploaded_file)
+    loader = PyMuPDFLoader(tmp_file_path)
     documents = loader.load()
 
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=512, chunk_overlap=10)
@@ -41,3 +46,6 @@ if uploaded_file is not None and user_input:
             st.write(llm_response["result"])
         except Exception as err:
             st.error(f'Exception occurred: {str(err)}')
+
+    # Clean up the temporary file
+    os.remove(tmp_file_path)
