@@ -5,3 +5,4 @@ openai
 chromadb 
 pymupdf 
 tiktoken
+pysqlite3-binary
