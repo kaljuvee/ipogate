@@ -1,5 +1,6 @@
 import os
 import streamlit as st
+import tempfile
 from langchain.document_loaders import PyMuPDFLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.vectorstores import Chroma
