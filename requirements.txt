@@ -1,8 +1,13 @@
 streamlit
 PyYAML
 langchain
-openai 
-chromadb 
-pymupdf 
+openai
+langchain-openai
+pydantic
+langchain-community
+python-dotenv
+python-docx
+pypdf
 tiktoken
-pysqlite3-binary
+pdfkit
+markdown

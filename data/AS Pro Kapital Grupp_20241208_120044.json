@@ -1,0 +1,56 @@
+{
+  "company_information_extraction_template": {},
+  "document_sections": {},
+  "basic_information": {
+    "-_company_name": "AS Pro Kapital Grupp",
+    "-_company_type": "public limited company",
+    "-_jurisdiction": "Estonia",
+    "-_foundation_date": "1994",
+    "-_address": "Sõjakooli 11, 11316 Tallinn, Estonia",
+    "-_website": "www.prokapital.com",
+    "-_email": "prokapital@prokapital.ee",
+    "-_phone": "+372 614 4920",
+    "-_main_activity": "Real estate development"
+  },
+  "share_offering_details": {
+    "-_maximum_shares": "56,687,954",
+    "-_price_per_share": "0.60-1.12 euros (trading range during 2023)",
+    "-_offering_period_end_date": "31 December 2023"
+  },
+  "company_overview": {
+    "-_founding_story": "Pro Kapital was established in 1994 as the first professional real estate development company in the Baltics.",
+    "-_core_business_description": "Leading real estate development company in the Baltics, focusing on high-quality residential and commercial buildings.",
+    "-_main_products/services": "Real estate development and sales, hotel operations, maintenance services.",
+    "-_target_market": "Capitals of Baltic states – Tallinn, Riga, and Vilnius.",
+    "-_growth_strategy": "Developing large-scale premium areas in Baltic capitals.",
+    "-_market_expansion_plans": "Expansion in Vilnius with new projects like Naugarduko 5.",
+    "-_product_development_plans": "Continued development in Kristiine City, Kalaranna District, and other projects.",
+    "-_dividend_policy": "Not explicitly mentioned."
+  },
+  "management_structure": {
+    "-_board_members": "Oscar Crameri, Patrick Werner, Giovanni Bozzetti",
+    "-_key_personnel": "Edoardo Preatoni (CEO)"
+  },
+  "financial_information": {
+    "-_total_share_capital": "11,337,590.80 euros",
+    "-_number_of_shares": "56,687,954",
+    "-_major_shareholders": "Raiffeisen Bank International AG (54.66%), Caceis Bank SA (12.78%), Clearstream Banking AG (10.99%), Svalbork Invest OÜ (9.86%), Six Sis Ltd (5.46%)",
+    "-_revenue_growth": "Decreased from 65.654 million euros in 2022 to 23.021 million euros in 2023",
+    "-_profit_margins": "Gross profit margin of 31% in 2023",
+    "-_key_financial_ratios": "Debt/Equity ratio of 0.97, Return on Assets of -0.08%, Return on Equity of -1.5%"
+  },
+  "market_analysis": {
+    "-_market_position": "Leading real estate development company in the Baltics"
+  },
+  "risk_factors": {
+    "-_business_risks": "Market demand fluctuations, geopolitical situation",
+    "-_financial_risks": "Interest rate increases, financing availability",
+    "-_legal_risks": "Ongoing litigation with the Land Board and other legal disputes"
+  },
+  "future_plans": {
+    "-_development_strategy": "Focus on premium residential and commercial projects in Baltic capitals",
+    "-_investment_plans": "Continued investment in ongoing projects and potential new acquisitions",
+    "-_expansion_goals": "Completion of ongoing projects and initiation of new phases in existing developments",
+    "note": "The document does not provide explicit information for some fields, such as VAT Number, Stock Exchange, Trading Facility, Minimum Subscription, Offering Period Start Date, Target Investors, Management Team Size, Team Expertise, Market Size, Growth Projections, Competitive Landscape, Business Risks, Market Risks, Share-related Risks, and Product Roadmap."
+  }
+}
