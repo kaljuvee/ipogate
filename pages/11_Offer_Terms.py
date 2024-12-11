@@ -2,70 +2,86 @@ import streamlit as st
 
 st.title("Offer Terms")
 
-def main():    
+# Numeric input fields
+st.header("Enter Offering Details")
+col1, col2 = st.columns(2)
 
-    # Background Section
-    st.header("Offering")
-    default_offering_text = '''
-    In the course of the Offering, tje Company will issue and offer
-up to XXXX Offer Shares. If interest in the Offering is
+with col1:
+    initial_shares = st.number_input("Initial number of Offer Shares", min_value=0, value=1000)
+    max_increase_percent = st.number_input("Maximum increase percentage", min_value=0, max_value=100, value=20)
+    share_nominal_value = st.number_input("Share nominal value (EUR)", min_value=0.0, value=0.10, format="%.2f")
+    share_premium = st.number_input("Share premium (EUR)", min_value=0.0, value=3.30, format="%.2f")
+
+with col2:
+    max_shares = st.number_input("Maximum number of Offer Shares", min_value=0, value=1200)
+    post_offering_capital = st.number_input("Post-offering share capital (EUR)", min_value=0, value=100000)
+    total_shares_after = st.number_input("Total number of shares after offering", min_value=0, value=10000)
+    registration_date = st.date_input("Expected registration date")
+
+# Generate button to create formatted text
+if st.button('Generate Offer Terms'):
+    offer_price = share_nominal_value + share_premium
+    
+    st.markdown("### Generated Offer Terms")
+    
+    # Offering Section
+    st.markdown("#### Offering")
+    st.markdown(f"""
+    In the course of the Offering, the Company will issue and offer
+up to {initial_shares:,} Offer Shares. If interest in the Offering is
 high and the demand of investors exceeds the number
 of Offer Shares, the Issuer may increase the number of
-Offer Shares by up to XX%, i.e. to a maximum of XXX,000
+Offer Shares by up to {max_increase_percent}%, i.e. to a maximum of {max_shares:,}
 Offer Shares.
-Assuming that all XXXX Offer Shares are subscribed
+
+Assuming that all {initial_shares:,} Offer Shares are subscribed
 for by investors during the Offering, the registered share
 capital of Company immediately after the issuing of the
-new shares will be EUR XXXXX and the total number of
-shares will correspondingly be XXXX.
+new shares will be EUR {post_offering_capital:,} and the total number of
+shares will correspondingly be {total_shares_after:,}.
+
 The increase of the share capital by the amount of
 the Offer Shares will presumably be registered in the
-Commercial Register on or around <date> (the
+Commercial Register on or around {registration_date.strftime('%d %B %Y')} (the
 date is subject to change).
-The shares are freely transferrable and are not subject to
-any restrictions on trading or pledging. 
-    '''
-    
-    offering = st.text_area("Edit the company's offering details", default_offering_text, height=150)
-    
 
-    default_eligibility_text = '''
-Participation in the Offering will be open to legal and
+The shares are freely transferrable and are not subject to
+any restrictions on trading or pledging.
+    """)
+    
+    # Eligibility Section
+    st.markdown("#### Eligibility")
+    st.markdown("""
+    Participation in the Offering will be open to legal and
 natural persons who are based in Estonia and who have
 opened a securities account through a Nasdaq CSD
-account operator (bank). 
-    '''
+account operator (bank).
+    """)
+    
+    # Offer Price Section
+    st.markdown("#### Offer Price")
+    st.markdown(f"""
+    Offer Shares will be priced at {offer_price:.2f} euros per Offer Share,
+comprising a nominal value of {share_nominal_value:.2f} cents and a share
+premium of {share_premium:.2f} euros.
+    """)
+    
+    # Save to session state if needed
+    st.session_state['offering_text'] = {
+        'initial_shares': initial_shares,
+        'max_increase_percent': max_increase_percent,
+        'max_shares': max_shares,
+        'post_offering_capital': post_offering_capital,
+        'total_shares_after': total_shares_after,
+        'registration_date': registration_date,
+        'share_nominal_value': share_nominal_value,
+        'share_premium': share_premium,
+        'offer_price': offer_price
+    }
 
-    # Eligibility
-    st.header("Eligibility")
-    eligibility = st.text_area("Edit eligiblity details: ", default_eligibility_text, height=150)
-
-
-    default_price_text = '''
-Offer Shares will be priced at 3.4 euros per Offer Share,
-comprising a nominal value of 10 cents and a share
-premium of 3.3 euros.
-    '''
-    # Offer price
-    st.header("Offer Price")
-    offer_price = st.text_area("Edit offer price details: ", default_price_text, height=150)
-
-    default_period_text = '''
-Offer Shares will be priced at 3.4 euros per Offer Share,
-comprising a nominal value of 10 cents and a share
-premium of 3.3 euros.
-    '''
-
-
-    # Offer period
-    st.header("Offer Period")
-    offer_period = st.text_area("Edit offer period details: ", default_period_text, height=150)
-
-    # Validate Button
-    if st.button('Validate'):
-        # Placeholder for future action
-        st.write("Validation process will be implemented here.")
-
-# Run the main function
-if __name__ == "__main__":
-    main()
+# Validate Button
+if st.button('Confirm'):
+    if 'offering_text' in st.session_state:
+        st.success("Offer terms have been validated and saved.")
+    else:
+        st.error("Please generate the offer terms first before confirming.")
