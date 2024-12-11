@@ -1,0 +1,45 @@
+{
+  "company_information_extraction_template": {},
+  "document_sections": {},
+  "basic_information": {
+    "-_company_name": "Shenzhen Fuxiang Aviation Technology Co., Ltd.",
+    "-_foundation_date": "2018-04-23",
+    "-_address": "Room 115 Overseas student pioneer parks(Longgang), Longcheng Industrial Park, huanggekeng community, Longcheng street, Longgang District, Shenzhen, China",
+    "-_main_activity": "Development and production of light aircraft (two-seater and four-seater), aviation materials and components, metaverse AR flight simulator, flight club operations, and aviation science popularization research and education.",
+    "-_company_type": "",
+    "-_jurisdiction": ""
+  },
+  "company_overview": {
+    "-_founding_story": "Shenzhen Fuxiang Aviation Technology Co., Ltd. is a comprehensive solution provider for fixed-wing light aircraft, committed to building an internationally leading R&D and industrial platform.",
+    "-_core_business_description": "The company focuses on aircraft technology development and service, providing high-quality products and services globally.",
+    "-_main_products/services": "Fixed-wing light aircraft, AR flight simulator, aviation research and education services.",
+    "-_growth_strategy": "Multi-product pipeline layout, localization of the supply chain, and expansion into global markets.",
+    "-_market_expansion_plans": "Introduction of new aircraft models and AR flight simulators into the market, promoting localization of the supply chain.",
+    "-_product_development_plans": "Development of new aircraft models such as CF2-LSA, CF2, CF2e, CF2H, CF4, and eVTOL aircraft.",
+    "-_dividend_policy": "Not explicitly mentioned."
+  },
+  "management_structure": {
+    "-_key_personnel": "The founding team has rich experience in enterprise management with a good international vision and global supply chain integration capabilities.",
+    "-_team_expertise": "The core technical team consists of experts with over 10 years of experience in aircraft development and production, possessing strong product creation and redefinition skills."
+  },
+  "market_analysis": {
+    "-_market_size": "The long-term scale of China's general aviation market is expected to exceed one trillion yuan.",
+    "-_growth_projections": "China's GA market has the potential for blowout development, with significant policy support and infrastructure development.",
+    "-_competitive_landscape": "High technical and capital thresholds with fewer competitors, providing first-mover enterprises with market dividends.",
+    "-_market_position": "The company is positioned as a leader in the domestic market with opportunities in overseas markets."
+  },
+  "risk_factors": {
+    "-_business_risks": "High technical and capital thresholds, long R&D cycles.",
+    "-_market_risks": "Low penetration rate in the general aviation industry.",
+    "-_financial_risks": "High financial requirements for enterprise operations.",
+    "-_legal_risks": "Certification and regulatory compliance challenges.",
+    "-_share-related_risks": "Not explicitly mentioned."
+  },
+  "future_plans": {
+    "-_development_strategy": "Introduction of new aircraft models and AR flight simulators, localization of the supply chain, and expansion into global markets.",
+    "-_investment_plans": "Not explicitly mentioned.",
+    "-_expansion_goals": "Increase global market share and become a leading fixed-wing light aircraft R&D and industrial platform.",
+    "-_product_roadmap": "Development and market introduction of CF2-LSA, CF2, CF2e, CF2H, CF4, and eVTOL aircraft.",
+    "note": "The document did not provide specific details for some sections such as Share Offering Details, Financial Information, and certain fields under Basic Information and Management Structure."
+  }
+}

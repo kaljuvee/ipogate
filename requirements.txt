@@ -11,3 +11,7 @@ pypdf
 tiktoken
 pdfkit
 markdown
+yfinance
+plotly
+pandas
+yahooquery
