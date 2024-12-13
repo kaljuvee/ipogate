@@ -10,67 +10,68 @@ from markdown import markdown
 import base64
 import json
 
+def validate_data(data):
+    """Validate that the extracted data contains required fields"""
+    if not isinstance(data, dict):
+        raise ValueError("Invalid data format - expected dictionary")
+    
+    required_sections = [
+        'basic_information',
+        'share_offering_details',
+        'company_overview'
+    ]
+    
+    missing_sections = [section for section in required_sections if section not in data]
+    if missing_sections:
+        raise ValueError(f"Missing required sections: {', '.join(missing_sections)}")
+    
+    # Validate basic information
+    if not data['basic_information'].get('-_company_name'):
+        raise ValueError("Company name is required")
+    
+    return True
+
+def clean_value(value):
+    """Clean and format value for markdown"""
+    if value is None or value == '':
+        return 'Not provided'
+    return str(value).strip()
+
 def json_to_markdown(data):
-    """Convert JSON data to formatted markdown"""
+    """Convert JSON data to formatted markdown with validation and cleaning"""
+    try:
+        validate_data(data)
+    except ValueError as e:
+        raise ValueError(f"Data validation failed: {str(e)}")
+    
     md = "# Company Prospectus\n\n"
     md += f"Generated on: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n"
     
-    # Basic Information
-    if 'basic_information' in data:
-        md += "## Basic Information\n\n"
-        for key, value in data['basic_information'].items():
-            key = key.replace('-_', '').replace('_', ' ').title()
-            md += f"**{key}**: {value}\n\n"
+    sections = {
+        'basic_information': "Basic Information",
+        'share_offering_details': "Share Offering Details", 
+        'company_overview': "Company Overview",
+        'management_structure': "Management Structure",
+        'financial_information': "Financial Information",
+        'market_analysis': "Market Analysis",
+        'risk_factors': "Risk Factors",
+        'future_plans': "Future Plans"
+    }
     
-    # Share Offering Details
-    if 'share_offering_details' in data:
-        md += "## Share Offering Details\n\n"
-        for key, value in data['share_offering_details'].items():
-            key = key.replace('-_', '').replace('_', ' ').title()
-            md += f"**{key}**: {value}\n\n"
+    for section_key, section_title in sections.items():
+        if section_key in data and isinstance(data[section_key], dict):
+            section_data = data[section_key]
+            if section_data:  # Only add section if it has data
+                md += f"## {section_title}\n\n"
+                for key, value in section_data.items():
+                    if value:  # Only add field if it has a value
+                        clean_key = key.replace('-_', '').replace('_', ' ').title()
+                        clean_val = clean_value(value)
+                        md += f"**{clean_key}**: {clean_val}\n\n"
     
-    # Company Overview
-    if 'company_overview' in data:
-        md += "## Company Overview\n\n"
-        for key, value in data['company_overview'].items():
-            key = key.replace('-_', '').replace('_', ' ').title()
-            md += f"**{key}**: {value}\n\n"
-    
-    # Management Structure
-    if 'management_structure' in data:
-        md += "## Management Structure\n\n"
-        for key, value in data['management_structure'].items():
-            key = key.replace('-_', '').replace('_', ' ').title()
-            md += f"**{key}**: {value}\n\n"
-    
-    # Financial Information
-    if 'financial_information' in data:
-        md += "## Financial Information\n\n"
-        for key, value in data['financial_information'].items():
-            key = key.replace('-_', '').replace('_', ' ').title()
-            md += f"**{key}**: {value}\n\n"
-    
-    # Market Analysis
-    if 'market_analysis' in data:
-        md += "## Market Analysis\n\n"
-        for key, value in data['market_analysis'].items():
-            key = key.replace('-_', '').replace('_', ' ').title()
-            md += f"**{key}**: {value}\n\n"
-    
-    # Risk Factors
-    if 'risk_factors' in data:
-        md += "## Risk Factors\n\n"
-        for key, value in data['risk_factors'].items():
-            key = key.replace('-_', '').replace('_', ' ').title()
-            md += f"**{key}**: {value}\n\n"
-    
-    # Future Plans
-    if 'future_plans' in data:
-        md += "## Future Plans\n\n"
-        for key, value in data['future_plans'].items():
-            key = key.replace('-_', '').replace('_', ' ').title()
-            md += f"**{key}**: {value}\n\n"
-            
+    if md == f"# Company Prospectus\n\nGenerated on: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n":
+        raise ValueError("No valid data found to generate prospectus")
+        
     return md
 
 def save_json(data, company_name):
@@ -254,25 +255,45 @@ if st.session_state.show_editable:
 
     if st.button('Generate Prospectus'):
         try:
+            if not st.session_state.extracted_data:
+                st.error("No data available. Please analyze a document first.")
+                st.stop()
+            
             # Convert JSON to markdown
-            markdown_content = json_to_markdown(st.session_state.extracted_data)
-            
-            # Get company name for filename
-            company_name = st.session_state.extracted_data.get('basic_information', {}).get('-_company_name', 'company')
-            
-            # Save markdown file
-            markdown_path = save_markdown(markdown_content, company_name)
-            
-            # Show preview of markdown
-            st.subheader("Generated Prospectus Content")
-            st.markdown(markdown_content)
-            
-            # Show file location
-            st.success(f'Prospectus content generated and saved to: {markdown_path}')
-            
-            # Add info about PDF generation
-            st.info('To generate PDF from command line, run:\n' +
-                   f'`python utils/pdf_generator.py {markdown_path}`')
-            
+            with st.spinner('Generating prospectus...'):
+                markdown_content = json_to_markdown(st.session_state.extracted_data)
+                
+                if not markdown_content.strip():
+                    st.error("Generated prospectus is empty. Please check the extracted data.")
+                    st.stop()
+                
+                # Get company name for filename
+                company_name = st.session_state.extracted_data.get('basic_information', {}).get('-_company_name', 'company')
+                
+                # Save markdown file
+                markdown_path = save_markdown(markdown_content, company_name)
+                
+                # Show preview of markdown
+                st.subheader("Generated Prospectus Content")
+                st.markdown(markdown_content)
+                
+                # Create download button for markdown
+                st.download_button(
+                    label="Download Prospectus (Markdown)",
+                    data=markdown_content,
+                    file_name=f"{company_name}_prospectus.md",
+                    mime="text/markdown"
+                )
+                
+                # Show file location
+                st.success(f'Prospectus content generated and saved to: {markdown_path}')
+                
+                # Add info about PDF generation
+                st.info('To generate PDF from command line, run:\n' +
+                       f'`python utils/pdf_generator.py {markdown_path}`')
+                
+        except ValueError as e:
+            st.error(f'Validation error: {str(e)}')
         except Exception as e:
             st.error(f'Error generating prospectus content: {str(e)}')
+            st.error("Please ensure the document analysis completed successfully and try again.")
