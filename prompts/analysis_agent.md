@@ -2,28 +2,8 @@
 
 ## Document Sections
 
-# Basic Information
-- Company Name
-- Company Registry Code
-- Company Type (e.g., "public limited company")
-- Jurisdiction
-- Stock Exchange
-- Trading Facility (e.g., "First North MTF")
-- Foundation Date
-- Address
-- Website
-- Email
-- Phone
-- VAT Number
-- Main Activity
+# 
 
-# Share Offering Details
-- Maximum Shares
-- Price per Share
-- Minimum Subscription
-- Offering Period Start Date
-- Offering Period End Date
-- Target Investors
 
 # Company Overview
 - Founding Story
