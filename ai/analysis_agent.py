@@ -1,5 +1,5 @@
-from langchain.chat_models import ChatOpenAI
-from langchain.document_loaders import PyPDFLoader, Docx2txtLoader, TextLoader
+from langchain_community.chat_models import ChatOpenAI
+from langchain_community.document_loaders import PyPDFLoader, Docx2txtLoader, TextLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.prompts import ChatPromptTemplate
 import os

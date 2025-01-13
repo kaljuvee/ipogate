@@ -4,8 +4,47 @@ app, rt = fast_app()
 
 @rt("/")
 def get():
-    return Titled("IPOLabs - Your Gateway to Public Markets",
-        Main(
+    styles = """
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: #f5f5f5;
+        }
+
+        .features, .additional-tools, .why-choose-us {
+            padding: 2rem;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .button.primary {
+            display: inline-block;
+            padding: 0.8rem 1.6rem;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            margin: 1rem 0;
+        }
+
+        .button.primary:hover {
+            background: #0056b3;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+    """
+    
+    return Titled(
+        "IPOLabs - Your Gateway to Public Markets",
+        styles=styles,
+        content=Main(
             # Hero section
             Section(cls="hero",
                 H1("IPOLabs"),
@@ -117,44 +156,5 @@ def get():
         )
     )
 
-# Add some basic styles
-styles = """
-.hero {
-    text-align: center;
-    padding: 4rem 2rem;
-    background: #f5f5f5;
-}
-
-.features, .additional-tools, .why-choose-us {
-    padding: 2rem;
-}
-
-.tools-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin: 2rem 0;
-}
-
-.button.primary {
-    display: inline-block;
-    padding: 0.8rem 1.6rem;
-    background: #007bff;
-    color: white;
-    text-decoration: none;
-    border-radius: 4px;
-    margin: 1rem 0;
-}
-
-.button.primary:hover {
-    background: #0056b3;
-}
-
-.text-center {
-    text-align: center;
-}
-"""
-
-app, rt = fast_app(hdrs=(Style(styles),))
-
-serve()
+if __name__ == "__main__":
+    serve() 

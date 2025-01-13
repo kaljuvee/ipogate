@@ -10,7 +10,8 @@ with open('config/ebidta-multipliers.yaml', 'r') as file:
     ebitda_multipliers = yaml.safe_load(file)
 
 # Streamlit app
-st.title("IPO Valuation Analysis")
+st.title("IPOLabs")
+st.subheader("Valuation Analysis")
 
 # Create options with multipliers for display
 revenue_sector_options = {f"{sector} ({multiplier}x)": sector 

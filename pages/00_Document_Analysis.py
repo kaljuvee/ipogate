@@ -115,7 +115,7 @@ def save_markdown(content, company_name):
 # Load environment variables
 load_dotenv()
 
-st.title('IPOGate')
+st.title('IPOLabs')
 st.subheader('Your Gateway to Public Markets')
 
 # Initialize session state

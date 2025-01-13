@@ -1,27 +1,62 @@
 import pandas as pd
 import yfinance as yf
+from typing import List, Dict
 import time
 
-def get_available_sectors():
-    """Get list of sectors from S&P 500."""
-    sp500_url = "https://en.wikipedia.org/wiki/List_of_S%26P_500_companies"
-    df = pd.read_html(sp500_url)[0]
-    sectors = sorted(df['GICS Sector'].unique().tolist())
-    return sectors
+def get_sp500_tickers() -> List[str]:
+    """Get list of S&P 500 tickers using yfinance."""
+    # You can get this from ^GSPC (S&P 500 index)
+    sp500 = yf.Ticker("^GSPC")
+    return sp500.components
 
-def get_tickers_for_sector(sector):
+def get_available_sectors() -> List[str]:
+    """Get list of unique sectors from S&P 500 companies."""
+    tickers = get_sp500_tickers()
+    sectors = set()
+    
+    # Process in batches to avoid rate limiting
+    batch_size = 100
+    for i in range(0, len(tickers), batch_size):
+        batch = tickers[i:i + batch_size]
+        
+        # Download info for batch of tickers
+        for ticker in batch:
+            try:
+                stock = yf.Ticker(ticker)
+                sector = stock.info.get('sector')
+                if sector:
+                    sectors.add(sector)
+            except Exception as e:
+                print(f"Error fetching sector for {ticker}: {str(e)}")
+            time.sleep(0.1)  # Rate limiting
+    
+    return sorted(list(sectors))
+
+def get_tickers_for_sector(sector: str) -> pd.DataFrame:
     """Get companies for a specific sector from S&P 500."""
-    sp500_url = "https://en.wikipedia.org/wiki/List_of_S%26P_500_companies"
-    df = pd.read_html(sp500_url)[0]
+    tickers = get_sp500_tickers()
+    companies = []
     
-    # Filter companies by sector
-    sector_companies = df[df['GICS Sector'] == sector]
+    # Process in batches to avoid rate limiting
+    batch_size = 100
+    for i in range(0, len(tickers), batch_size):
+        batch = tickers[i:i + batch_size]
+        
+        # Download info for batch of tickers
+        for ticker in batch:
+            try:
+                stock = yf.Ticker(ticker)
+                info = stock.info
+                if info.get('sector') == sector:
+                    companies.append({
+                        'Symbol': ticker,
+                        'Name': info.get('longName', 'N/A')
+                    })
+            except Exception as e:
+                print(f"Error fetching data for {ticker}: {str(e)}")
+            time.sleep(0.1)  # Rate limiting
     
-    # Create DataFrame with Symbol and Name
-    companies_df = sector_companies[['Symbol', 'Security']].copy()
-    companies_df.columns = ['Symbol', 'Name']
-    
-    return companies_df
+    return pd.DataFrame(companies)
 
 def get_company_details(ticker):
     """Get market data for a specific ticker."""
