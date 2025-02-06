@@ -1,160 +1,122 @@
-from fasthtml.common import *
+import streamlit as st
 
-app, rt = fast_app()
+# Set page config
+st.set_page_config(
+    page_title="IPOLabs - Your Gateway to Public Markets",
+    page_icon="📈"
+)
 
-@rt("/")
-def get():
-    return Titled("IPOLabs - Your Gateway to Public Markets",
-        Main(
-            # Hero section
-            Section(cls="hero",
-                H1("IPOLabs"),
-                H2("Your Gateway to Public Markets"),
-                P("IPOGate guides you through every step of your IPO journey with our AI-powered tools and analytics."),
-                A("Begin Your IPO Journey", href="/document-analysis", cls="button primary")
-            ),
+# Language selector in sidebar
+language = st.sidebar.selectbox('Language / Язык', ['English', 'Русский'])
+st.session_state['language'] = 'en' if language == 'English' else 'ru'
 
-            # Main features section
-            Section(cls="features",
-                H2("Your Path to Going Public"),
-                
-                Article(
-                    H3("1. Document Analysis 📄"),
-                    P("Transform your company documents into a professional prospectus:"),
-                    Ul(
-                        Li("Upload your company documents (PDF, DOCX, or TXT)"),
-                        Li("AI-powered extraction of key company information"),
-                        Li("Automated prospectus generation with standardized formatting"),
-                        Li("Review and edit capabilities for accuracy")
-                    )
-                ),
+# Hero section
+st.title("IPOLabs")
+st.header("Your Gateway to Public Markets")
+st.write("IPOGate guides you through every step of your IPO journey with our AI-powered tools and analytics.")
+if st.button("Begin Your IPO Journey"):
+    st.switch_page("pages/document_analysis.py")
 
-                Article(
-                    H3("2. Multiplier Valuation 📊"),
-                    P("Determine your company's market value using industry standards:"),
-                    Ul(
-                        Li("Industry-specific multiple analysis"),
-                        Li("Peer comparison metrics"),
-                        Li("Automated valuation calculations"),
-                        Li("Customizable parameters for precise estimates")
-                    )
-                ),
+# Main features section
+st.header("Your Path to Going Public")
 
-                Article(
-                    H3("3. Comparative Analysis 📈"),
-                    P("Benchmark your company against industry peers:"),
-                    Ul(
-                        Li("Comprehensive peer group analysis"),
-                        Li("Market positioning assessment"),
-                        Li("Competitive advantage evaluation"),
-                        Li("Growth potential analysis")
-                    )
-                )
-            ),
+col1, col2, col3 = st.columns(3)
 
-            # Additional tools section
-            Section(cls="additional-tools",
-                H2("Additional Tools & Resources"),
-                
-                Div(cls="tools-grid",
-                    Article(
-                        H3("Financial Analysis"),
-                        Ul(
-                            Li("Detailed financial statement analysis"),
-                            Li("Key performance indicators"),
-                            Li("Growth projections"),
-                            Li("Cash flow analysis")
-                        )
-                    ),
-                    
-                    Article(
-                        H3("Risk Assessment"),
-                        Ul(
-                            Li("Industry-specific risk factors"),
-                            Li("Market condition analysis"),
-                            Li("Regulatory compliance checks"),
-                            Li("Mitigation strategies")
-                        )
-                    ),
-                    
-                    Article(
-                        H3("Market Intelligence"),
-                        Ul(
-                            Li("Industry trends and insights"),
-                            Li("Market sentiment analysis"),
-                            Li("Investor preference tracking"),
-                            Li("Timing recommendations")
-                        )
-                    )
-                )
-            ),
+with col1:
+    st.subheader("1. Document Analysis 📄")
+    st.write("Transform your company documents into a professional prospectus:")
+    st.markdown("""
+    - Upload your company documents (PDF, DOCX, or TXT)
+    - AI-powered extraction of key company information
+    - Automated prospectus generation with standardized formatting
+    - Review and edit capabilities for accuracy
+    """)
 
-            # Why choose us section
-            Section(cls="why-choose-us",
-                H2("Why Choose IPOLabs?"),
-                Ul(
-                    Li(Strong("AI-Powered Analysis"), ": Advanced algorithms for accurate data extraction and analysis"),
-                    Li(Strong("Time Efficiency"), ": Automate manual processes and focus on strategic decisions"),
-                    Li(Strong("Professional Output"), ": Generate investor-ready documents and presentations"),
-                    Li(Strong("Expert Guidance"), ": Step-by-step assistance throughout your IPO journey")
-                ),
-                P(
-                    "Ready to take your company public? ",
-                    A("Begin Your IPO Journey", href="/document-analysis", cls="button primary")
-                )
-            ),
+with col2:
+    st.subheader("2. Multiplier Valuation 📊")
+    st.write("Determine your company's market value using industry standards:")
+    st.markdown("""
+    - Industry-specific multiple analysis
+    - Peer comparison metrics
+    - Automated valuation calculations
+    - Customizable parameters for precise estimates
+    """)
 
-            # Footer
-            Footer(
-                Hr(),
-                P(
-                    "For more information about our services, please visit our ",
-                    A("About Us", href="/about"),
-                    " page or contact our team.",
-                    cls="text-center"
-                )
-            )
-        )
-    )
+with col3:
+    st.subheader("3. Comparative Analysis 📈")
+    st.write("Benchmark your company against industry peers:")
+    st.markdown("""
+    - Comprehensive peer group analysis
+    - Market positioning assessment
+    - Competitive advantage evaluation
+    - Growth potential analysis
+    """)
 
-# Add some basic styles
-styles = """
-.hero {
-    text-align: center;
-    padding: 4rem 2rem;
-    background: #f5f5f5;
-}
+# Additional tools section
+st.header("Additional Tools & Resources")
 
-.features, .additional-tools, .why-choose-us {
-    padding: 2rem;
-}
+tool_col1, tool_col2, tool_col3 = st.columns(3)
 
-.tools-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin: 2rem 0;
-}
+with tool_col1:
+    st.subheader("Financial Analysis")
+    st.markdown("""
+    - Detailed financial statement analysis
+    - Key performance indicators
+    - Growth projections
+    - Cash flow analysis
+    """)
 
-.button.primary {
-    display: inline-block;
-    padding: 0.8rem 1.6rem;
-    background: #007bff;
-    color: white;
-    text-decoration: none;
-    border-radius: 4px;
-    margin: 1rem 0;
-}
+with tool_col2:
+    st.subheader("Risk Assessment")
+    st.markdown("""
+    - Industry-specific risk factors
+    - Market condition analysis
+    - Regulatory compliance checks
+    - Mitigation strategies
+    """)
 
-.button.primary:hover {
-    background: #0056b3;
-}
+with tool_col3:
+    st.subheader("Market Intelligence")
+    st.markdown("""
+    - Industry trends and insights
+    - Market sentiment analysis
+    - Investor preference tracking
+    - Timing recommendations
+    """)
 
-.text-center {
-    text-align: center;
-}
-"""
+# Why choose us section
+st.header("Why Choose IPOLabs?")
+st.markdown("""
+- **AI-Powered Analysis**: Advanced algorithms for accurate data extraction and analysis
+- **Time Efficiency**: Automate manual processes and focus on strategic decisions
+- **Professional Output**: Generate investor-ready documents and presentations
+- **Expert Guidance**: Step-by-step assistance throughout your IPO journey
+""")
 
-app, rt = fast_app(hdrs=(Style(styles),))
+if st.button("Begin Your IPO Journey", key="bottom_cta"):
+    st.switch_page("pages/document_analysis.py")
 
-serve()
+# Footer
+st.markdown("---")
+st.markdown("""
+<div style='text-align: center'>
+For more information about our services, please visit our 
+<a href="/about">About Us</a> page or contact our team.
+</div>
+""", unsafe_allow_html=True)
+
+# Custom CSS
+st.markdown("""
+<style>
+    .stButton button {
+        background-color: #007bff;
+        color: white;
+        border-radius: 4px;
+        padding: 0.8rem 1.6rem;
+        border: none;
+    }
+    .stButton button:hover {
+        background-color: #0056b3;
+    }
+</style>
+""", unsafe_allow_html=True)

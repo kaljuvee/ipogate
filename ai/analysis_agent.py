@@ -6,6 +6,8 @@ import os
 import tempfile
 import re
 import json
+import openai
+import streamlit as st
 
 class CompanyAnalysisAgent:
     def __init__(self, model_name):
@@ -128,6 +130,28 @@ class CompanyAnalysisAgent:
         documents = self._load_document(uploaded_file)
         splits = self._split_documents(documents)
         content = " ".join([doc.page_content for doc in splits])
+        
+        # First display original text if it's Russian
+        if 'ru' in content.lower():
+            st.subheader("Original Russian Text:")
+            st.text(content)
+            
+            # Translate to English using OpenAI synchronously
+            translation_response = openai.ChatCompletion.create(
+                model="gpt-4",
+                messages=[
+                    {"role": "system", "content": "You are a professional translator. Translate the following Russian text to English while preserving all technical and business terminology."},
+                    {"role": "user", "content": content}
+                ]
+            )
+            
+            translated_text = translation_response.choices[0].message.content
+            
+            st.subheader("English Translation:")
+            st.text(translated_text)
+            
+            # Use translated text for analysis
+            content = translated_text
         
         messages = self.prompt.format_messages(
             template=self.template,
