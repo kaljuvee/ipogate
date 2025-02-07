@@ -2,9 +2,6 @@
 
 ## Document Sections
 
-# 
-
-
 # Company Overview
 - Founding Story
 - Core Business Description

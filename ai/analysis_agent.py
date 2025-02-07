@@ -138,7 +138,7 @@ class CompanyAnalysisAgent:
             
             # Translate to English using OpenAI synchronously
             translation_response = openai.ChatCompletion.create(
-                model="gpt-4",
+                model="gpt-4o-mini",
                 messages=[
                     {"role": "system", "content": "You are a professional translator. Translate the following Russian text to English while preserving all technical and business terminology."},
                     {"role": "user", "content": content}
